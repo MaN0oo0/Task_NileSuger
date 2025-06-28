@@ -1,0 +1,28 @@
+Entities and Relationships:
+1. Role (N) ──── (M) User (through UserRole)
+   - Many Users can have many Roles
+   - UserRole is the junction table with assigned date
+
+2. UserRole (1) ──── (N) Course
+   - A UserRole record (with Instructor role) can teach many Courses
+   - Each Course must reference a valid Instructor UserRole
+
+3. UserRole (1) ──── (N) Enrollment
+   - A UserRole record (with Student role) can have many Enrollments
+   - Each Enrollment must reference a valid Student UserRole
+
+4. Course (1) ──── (N) Lesson
+   - One Course contains many Lessons
+   - Each Lesson belongs to exactly one Course
+
+5. Lesson (1) ──── (N) Assignment
+   - One Lesson can have many Assignments
+   - Each Assignment belongs to exactly one Lesson
+
+6. Assignment (1) ──── (N) Submission
+   - One Assignment can have many Submissions
+   - Each Submission is for one Assignment
+
+7. User (1) ──── (N) Submission
+   - One User can submit many Submissions
+   - Each Submission is by one User (direct reference)
