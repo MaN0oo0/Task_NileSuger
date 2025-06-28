@@ -14,7 +14,7 @@ CREATE TABLE Role (
     UpdatedAt DATETIME DEFAULT GETDATE()
 );
 
--- Create User table (now independent)
+-- Create User table 
 CREATE TABLE [User] (
     UserID INT PRIMARY KEY IDENTITY(1,1),
     Username NVARCHAR(50) NOT NULL UNIQUE,
@@ -41,7 +41,7 @@ CREATE TABLE UserRole (
     CONSTRAINT UQ_UserRole UNIQUE (UserID, RoleID)
 );
 
--- Create Course table (now references UserRole instead of User directly)
+-- Create Course table 
 CREATE TABLE Course (
     CourseID INT PRIMARY KEY IDENTITY(1,1),
     Title NVARCHAR(100) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE Course (
     FOREIGN KEY (InstructorUserRoleID) REFERENCES UserRole(UserRoleID)
 );
 
--- Create Enrollment table (now references UserRole)
+-- Create Enrollment table 
 CREATE TABLE Enrollment (
     EnrollmentID INT PRIMARY KEY IDENTITY(1,1),
     StudentUserRoleID INT NOT NULL, -- References UserRole, ensuring the user has Student role
